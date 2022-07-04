@@ -69,6 +69,7 @@ export const initialNodes = [
             label: <ComponentStore />,
         },
         position: { x: 250, y: 400 },
+        targetPosition: 'top',
         style: {
             width: 150,
             height: 150,

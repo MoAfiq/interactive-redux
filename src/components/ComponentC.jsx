@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Handle } from "react-flow-renderer";
 import styled from "styled-components";
+import Swal from 'sweetalert2'
 
 const Container = styled.div`
     display: flex;
@@ -47,7 +48,9 @@ function ComponentC({ dispatch, setUserNameToStore }) {
         try {
             obj = JSON.parse(jsonStr(obj));
             setAction({...obj});
-        } catch (_) {}
+        } catch (_) {
+            setAction({})
+        }
     }
 
     return (
@@ -56,7 +59,17 @@ function ComponentC({ dispatch, setUserNameToStore }) {
             <h5 style={{ color: "orange" }}>user_name: {user_name}</h5>
             <Text>Action:</Text>
             <Input type="textarea" id="action" onChange={parseAction}/>
-            <Button onClick={() => dispatch(action)}>
+            <Button onClick={() => {
+                try {
+                  dispatch(action)
+                } catch (err) {
+                    console.log(err)
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error in dispatching!',
+                        text: 'Did you entered your action format correctly?',
+                      })
+                }}}>
                 dispatch(action)
             </Button>
             <Handle type='source' position='bottom' />
