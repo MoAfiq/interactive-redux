@@ -1,18 +1,66 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Handle } from "react-flow-renderer";
+import styled from "styled-components";
 
-function ComponentC({ setUserNameToStore }) {
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`;
+
+const Input = styled.textarea`
+    height: 60px;
+    width: 95%;
+    font-size: 10px;
+    resize: none;
+`;
+
+const Button = styled.button`
+ font-size: 11px;
+ margin: 10px auto;
+ padding: 5px;
+ shadow: none;
+ &:hover {
+    background: yellow;
+    border: 2px solid yellow;
+    border-radius: 2px;
+}
+`;
+
+const Text = styled.p`
+    font-size: 12px;
+    font-weight: 800;
+`;
+
+function ComponentC({ dispatch, setUserNameToStore }) {
     const [user_name, _] = React.useState("Ella Musk");
+    const [action, setAction] = React.useState()
+
+    const parseAction = e => {
+        let obj = e.target.value;
+        let jsonStr = (object) => object.replace(/(\w+:)|(\w+ :)/g, (matchedStr) => {
+            return '"' + matchedStr.substring(0, matchedStr.length - 1) + '":';
+          });
+
+        try {
+            obj = JSON.parse(jsonStr(obj));
+            setAction({...obj});
+        } catch (_) {}
+    }
+
     return (
-        <div>
+        <Container>
             <h3>Component C</h3>
             <h5 style={{ color: "orange" }}>user_name: {user_name}</h5>
-            <button onClick={() => setUserNameToStore(user_name)}>
-                Set user_name to store
-            </button>
+            <Text>Action:</Text>
+            <Input type="textarea" id="action" onChange={parseAction}/>
+            <Button onClick={() => dispatch(action)}>
+                dispatch(action)
+            </Button>
             <Handle type='source' position='bottom' />
-        </div>
+        </Container>
     );
 }
 
@@ -23,6 +71,7 @@ const mapDispatchToProps = (dispatch) => {
                 type: "SET_USER_NAME",
                 payload: user_name,
             }),
+        dispatch
     };
 };
 

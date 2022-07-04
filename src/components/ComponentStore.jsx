@@ -8,7 +8,7 @@ function ComponentStore({ state }) {
             <strong>Store</strong>
             {Object.keys(state).map((key) => {
                 return (
-                    <h5 style={{ color: "orange" }}>
+                    <h5 key={key} style={{ color: "orange" }}>
                         {key}: {state[key].length == 0 ? '""' : state[key]}
                     </h5>
                 );
