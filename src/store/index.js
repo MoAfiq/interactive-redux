@@ -1,10 +1,10 @@
 import { applyMiddleware, createStore } from "redux";
 import logger from "redux-logger";
 
-const initialState = {
+const initialState = Object.freeze({
     user_name: '""',
     balance: 0,
-};
+});
 
 function rootReducer(state = initialState, action) {
     switch (action.type) {

@@ -15,7 +15,7 @@ function App() {
                 <link
                     rel='icon'
                     type='image/png'
-                    href='https://cdn.frankerfacez.com/emoticon/379582/4'
+                    href='https://w7.pngwing.com/pngs/413/852/png-transparent-redux-react-logo-javascript-dq-purple-violet-text-thumbnail.png'
                     sizes='16x16'
                 />
             </Helmet>
