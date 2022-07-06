@@ -1,0 +1,50 @@
+.reducer {
+    background: none;
+    width: 350px;
+    height: 150px;
+}
+
+.reducer:before {
+    content: "Reducer";
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: auto;
+    width: 100%;
+}
+
+.store {
+    background: none;
+    width: 400px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed black;
+}
+
+.store:before {
+    content: "Store";
+    font-size: 14px;
+    font-weight: 700;
+    margin-right: auto;
+    margin-bottom: auto;
+    position: absolute;
+    top: 15px;
+    left: -160px;
+    width: 100%;
+}
+
+.state {
+    background: #ffe7bf;
+    width: 350px;
+}
+
+.state:before {
+    content: "State";
+    font-size: 10px;
+    font-weight: 700;
+    margin-right: auto;
+    width: 100%;
+    margin-bottom: 10px;
+}

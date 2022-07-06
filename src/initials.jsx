@@ -1,8 +1,87 @@
 import React from "react";
 import { addEdge } from "react-flow-renderer";
 import ComponentC from "./components/ComponentC";
+import ComponentE from "./components/ComponentE";
 import ComponentF from "./components/ComponentF";
 import ComponentStore from "./components/ComponentStore";
+import ComponentState from "./components/ComponentState";
+import ComponentReducer from "./components/ComponentReducer";
+
+import "./components/styles.css";
+
+const initialReducerNodes = [
+    {
+        id: "condition",
+        type: "target",
+        data: {
+            label: (
+                <div>
+                    <strong>action.type</strong>
+                </div>
+            ),
+        },
+        position: { x: 100, y: 25 },
+        targetPosition: "bottom",
+        parentNode: "reducer",
+        style: {
+            background: "yellow",
+        },
+    },
+    {
+        id: "action1",
+        type: "target",
+        data: {
+            label: (
+                <div>
+                    <strong>SET_USER_NAME</strong>
+                </div>
+            ),
+        },
+        position: { x: 20, y: 100 },
+        targetPosition: "top",
+        parentNode: "reducer",
+        style: {
+            fontSize: "10px",
+            width: "fit-content",
+        },
+    },
+    {
+        id: "action2",
+        type: "target",
+        data: {
+            label: (
+                <div>
+                    <strong>ADD_BALANCE</strong>
+                </div>
+            ),
+        },
+        position: { x: 131, y: 100 },
+        targetPosition: "top",
+        parentNode: "reducer",
+        style: {
+            fontSize: "10px",
+            width: "fit-content",
+        },
+    },
+    {
+        id: "action3",
+        type: "target",
+        data: {
+            label: (
+                <div>
+                    <strong>DEDUCT_BALANCE</strong>
+                </div>
+            ),
+        },
+        position: { x: 230, y: 100 },
+        targetPosition: "top",
+        parentNode: "reducer",
+        style: {
+            fontSize: "10px",
+            width: "fit-content",
+        },
+    },
+];
 
 export const initialNodes = [
     {
@@ -47,8 +126,11 @@ export const initialNodes = [
     {
         id: "6",
         type: "output",
-        data: { label: "Component E" },
+        data: { label: <ComponentE /> },
         position: { x: 350, y: 250 },
+        style: {
+            background: "teal",
+        },
     },
     {
         id: "7",
@@ -68,20 +150,33 @@ export const initialNodes = [
         data: {
             label: <ComponentStore />,
         },
-        position: { x: 250, y: 400 },
-        targetPosition: 'top',
-        style: {
-            width: 150,
-            height: 150,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            textAlign: "center",
-            background: "#702963",
-            color: "white",
-            fontSize: 18,
-        },
+        position: { x: 140, y: 600 },
+        targetPosition: "top",
+        className: "store",
     },
+    {
+        id: "reducer",
+        type: "source",
+        data: {
+            label: <ComponentReducer />,
+        },
+        position: { x: 25, y: 50 },
+        targetPosition: "bottom",
+        className: "reducer",
+        parentNode: "store",
+    },
+    {
+        id: "state",
+        type: "output",
+        data: {
+            label: <ComponentState />,
+        },
+        position: { x: 25, y: 220 },
+        targetPosition: "top",
+        className: "state",
+        parentNode: "store",
+    },
+    ...initialReducerNodes,
 ];
 
 export const initialEdges = [
@@ -92,5 +187,27 @@ export const initialEdges = [
     { id: "e3-6", source: "3", target: "6" },
     { id: "e3-7", source: "3", target: "7" },
     { id: "e3-store", source: "4", target: "store", animated: true },
+    { id: "e6-store", source: "6", target: "store", animated: true },
     { id: "e7-store", source: "7", target: "store", animated: true },
+    {
+        id: "ereducer-state",
+        source: "reducer",
+        target: "state",
+        animated: true,
+    },
+    {
+        id: "econdition-action1",
+        source: "condition",
+        target: "action1",
+    },
+    {
+        id: "econdition-action2",
+        source: "condition",
+        target: "action2",
+    },
+    {
+        id: "econdition-action3",
+        source: "condition",
+        target: "action3",
+    },
 ];

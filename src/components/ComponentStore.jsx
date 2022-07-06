@@ -5,16 +5,7 @@ import { Handle } from "react-flow-renderer";
 function ComponentStore({ state }) {
     return (
         <div>
-            <strong>Store</strong>
-            {Object.keys(state).map((key) => {
-                return (
-                    <h5 key={key} style={{ color: "orange" }}>
-                        {key}: {state[key].length == 0 ? '""' : state[key]}
-                    </h5>
-                );
-            })}
-            <Handle type='target' position='right' />
-            <Handle type='target' position='left' />
+            <Handle type='source' position='top' />
         </div>
     );
 }
