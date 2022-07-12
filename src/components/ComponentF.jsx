@@ -7,7 +7,7 @@ function ComponentF({ user_name }) {
         <div>
             <h3>Component F</h3>
             <h4 style={{ color: "orange" }}>user_name: {user_name}</h4>
-            <Handle type='source' position='bottom' />
+            <Handle type='target' position='bottom' id='f-t'/>
         </div>
     );
 }

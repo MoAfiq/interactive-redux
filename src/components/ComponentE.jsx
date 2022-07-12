@@ -7,7 +7,7 @@ function ComponentE({ balance }) {
         <div>
             <h3>Component E</h3>
             <h4 style={{ color: "orange" }}>balance : {balance}</h4>
-            <Handle type='source' position='bottom' />
+            <Handle type='target' position='bottom' id='e-t' />
         </div>
     );
 }

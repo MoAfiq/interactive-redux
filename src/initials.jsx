@@ -186,9 +186,9 @@ export const initialEdges = [
     { id: "e2-5", source: "2", target: "5" },
     { id: "e3-6", source: "3", target: "6" },
     { id: "e3-7", source: "3", target: "7" },
-    { id: "e3-store", source: "4", target: "store", animated: true },
-    { id: "e6-store", source: "6", target: "store", animated: true },
-    { id: "e7-store", source: "7", target: "store", animated: true },
+    { id: "e4-store", source: "4", target: "store", animated: true, label: "dispatching",labelBgStyle: { fill: 'none' } },
+    { id: "e6-store", source: "store", target: "6", targetHandle: 'e-t', animated: true, label: "subscribing",labelBgStyle: { fill: 'none' }},
+    { id: "e7-store", source: "store", target: "7", targetHandle: 'f-t', animated: true, label: "subscribing",labelBgStyle: { fill: 'none' } },
     {
         id: "ereducer-state",
         source: "reducer",
